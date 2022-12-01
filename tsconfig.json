@@ -8,6 +8,11 @@
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
+    "paths": {
+      "ion-video-player": [
+        "dist/ion-video-player"
+      ]
+    },
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,

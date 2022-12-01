@@ -3,5 +3,41 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "ion-video-player": {
+      "projectType": "library",
+      "root": "projects/ion-video-player",
+      "sourceRoot": "projects/ion-video-player/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ion-video-player/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ion-video-player/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ion-video-player/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ion-video-player/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
   }
 }

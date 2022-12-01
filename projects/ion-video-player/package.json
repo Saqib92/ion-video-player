@@ -1,0 +1,15 @@
+{
+  "name": "ion-video-player",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0",
+    "@ionic/angular": "^6.3.9"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@ionic/angular": "^6.3.9"
+  }
+}

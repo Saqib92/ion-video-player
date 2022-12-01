@@ -1,0 +1,55 @@
+<div id="player" #playerContainer class="ion-video-player">
+    <video id="video-element" (timeupdate)="updateProgressBar()" #player [autoplay]="options.autoplay"
+        [muted]="options.muted"
+        (play)="onPlay()"
+        (pause)="onPause()"
+        (ended)="onEnded()"
+        (volumechange)="onVolumechange()"
+        (playing)="onPlaying()"
+        (error)="onError()"
+        >
+        <source [src]="options.src" [type]="options.type">
+    </video>
+    <div id="controls">
+        <progress id="progress-bar" (click)="seek($event)" min="0" max="100" value='1' #progressBar></progress>
+
+        <div class="controls-btns">
+            <div class="start-stop">
+                <ion-button fill="clear" size="small" slot="icon-only" class='play' (click)="playPauseVideo()">
+                    <ion-icon [name]="isPlaying ? 'pause' : 'play'"></ion-icon>
+                </ion-button>
+                <span *ngIf="player.duration">
+                    {{player.currentTime | secondsToHours}} / {{player.duration | secondsToHours }}
+                </span>
+            </div>
+
+            <div class="volume-box">
+                <input type="range" class="volumeRange" (change)="setVolume()" id="volume-bar" title="volume" min="0"
+                    max="100" step="1" value="100" #volumeBar>
+                <ion-button fill="clear" size="small" slot="icon-only" class="mute" title="mute" (click)="muteVolume()">
+                    <ion-icon [name]="
+                        volume == 0 ? 'volume-mute'
+                        :
+                        (volume > 0 && volume < 0.50) ? 'volume-low'
+                        :
+                        (volume > 0.50 && volume < 0.80) ? 'volume-medium'
+                        : 'volume-high'">
+                    </ion-icon>
+                </ion-button>
+                <ion-button fill="clear" size="small" slot="icon-only" (click)="openFullScreen()">
+                    <ion-icon name="expand"></ion-icon>
+                </ion-button>
+
+                <ion-button fill="clear" size="small" slot="icon-only" (click)="openPip()">
+                    <ion-icon name="open"></ion-icon>
+                </ion-button>
+                <!-- <ion-button size="small" slot="icon-only"  id="btnStop" class="" title="stop" accesskey="X" (click)="stopVideo()">
+                    <ion-icon name="stop"></ion-icon>
+                </ion-button>
+                <ion-button size="small" slot="icon-only"  id="btnReplay" class="replay" title="replay" accesskey="R" (click)="replayVideo()">
+                    <ion-icon name="reload"></ion-icon>
+                </ion-button> -->
+            </div>
+        </div>
+    </div>
+</div>

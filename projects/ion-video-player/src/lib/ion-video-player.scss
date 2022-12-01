@@ -1,0 +1,133 @@
+#player {
+  position: relative;
+  &:hover {
+    #controls {
+      visibility: visible;
+    }
+  }
+}
+
+.ion-video-player{
+    width: 100%;
+    video{
+      width: inherit;
+      height: inherit;
+    }
+}
+
+
+.stop {
+  float: right;
+  text-align: end;
+}
+
+ion-button {
+  color: white;
+}
+
+#controls {
+  background-color: #0000004f;
+  color: #fff;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  padding: 0px 5px;
+  box-sizing: border-box;
+
+  visibility: hidden;
+  .controls-btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .start-stop {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      font-size: 10px;
+
+      ion-button {
+        color: white;
+      }
+    }
+
+  }
+}
+
+progress {
+  height: 8px;
+  width: 100%;
+  border: 1.5px solid #fff;
+  border-radius: 5px;
+}
+
+progress[value] {
+  &::-moz-progress-bar {
+    background: darkgrey;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  }
+
+  &::-webkit-progress-bar {
+    background-color: darkgrey;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  }
+
+  &::-webkit-progress-value {
+    background-color: #fff;
+  }
+}
+
+.volume-box {
+  display: flex;
+  align-items: center;
+
+  .volumeRange {
+    width: 50px;
+    background-color: transparent;
+
+    &::-webkit-slider-runnable-track {
+      width: 50px;
+      height: 8px;
+      cursor: pointer;
+      background-color: #0000004f;
+      border-radius: 10px;
+      box-sizing: border-box;
+      border: 2px solid #fff;
+    }
+
+    &::-webkit-slider-thumb {
+      vertical-align: middle;
+      height: 12px;
+      width: 12px;
+      border-radius: 50%;
+      background: white;
+      cursor: pointer;
+      -webkit-appearance: none;
+      margin-top: -6px;
+    }
+
+    //Moz
+    &::-moz-range-track {
+      width: 50px;
+      height: 8px;
+      cursor: pointer;
+      background: transparent;
+      border-radius: 10px;
+      box-sizing: border-box;
+      border: 2px solid #fff;
+    }
+
+    &::-moz-range-thumb {
+      vertical-align: middle;
+      height: 12px;
+      width: 12px;
+      border-radius: 50%;
+      background: white;
+      cursor: pointer;
+      -webkit-appearance: none;
+      margin-top: -6px;
+    }
+  }
+}
