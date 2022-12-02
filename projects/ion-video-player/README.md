@@ -1,4 +1,4 @@
-<h1 align="center">ion-vide-player</h1>
+<h1 align="center">ion-video-player</h1>
 <p>
   <img src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/saqib92/ion-video-player#readme">
@@ -90,6 +90,17 @@ Include the component on page template, like the example below:
  - controls: `boolean` show constrols on video element
  - autoplay: `boolean` auto play video
  - muted: `boolean` to mute video 
+
+## CSS
+
+Apply css to video element. 
+
+```
+  ::ng-deep .ion-video-player{
+    width: 100%!important;
+    height: 400px!important;  
+  }
+```
 
 ## Author <a name = "author"></a>
 
