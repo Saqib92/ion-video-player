@@ -1,6 +1,36 @@
 {
   "name": "ion-video-workspace",
-  "version": "0.0.0",
+  "version": "0.0.2",
+  "description": "HTML video player for Ionic 6 applications using angular",
+  "author": "Najam Us Saqib",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saqib92/ion-video-player.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Saqib92/ion-video-player/issues"
+  },
+  "keywords": [
+    "Ionic",
+    "Ionic 5",
+    "Ionic 6",
+    "Ionic Framework",
+    "Video",
+    "PLayer",
+    "Component",
+    "Videos",
+    "Custom",
+    "Controls",
+    "Capacitor",
+    "Cordova",
+    "Angular Video",
+    "Angular",
+    "Angular Video Player",
+    "Angular Video",
+    "Ionic Video",
+    "Ionic Video Player"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

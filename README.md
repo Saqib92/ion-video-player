@@ -1,27 +1,112 @@
-# IonVideoWorkspace
+<h1 align="center">ion-vide-player</h1>
+<p>
+  <img src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/saqib92/ion-video-player#readme">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
+  </a>
+  <a href="https://github.com/saqib92/ion-video-player/graphs/commit-activity">
+    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" target="_blank" />
+  </a>
+  <a href="https://github.com/saqib92/ion-video-player/blob/master/LICENSE">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" target="_blank" />
+  </a>
+</p>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
+## 📝 Table of Contents
 
-## Development server
+- [Prerequisites](#prerequisites)
+- [Install](#install)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Author](#author)
+- [Contributing](#contributing)
+- [Show your support](#support)
+- [License](#license)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## ✅ Prerequisites <a name = "prerequisites"></a>
 
-## Code scaffolding
+The current version of the library is compatible with Ionic 6+.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## ⬇️ Install <a name = "install"></a>
 
-## Build
+Using npm
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```sh
+npm install ion-video-player --save
+```
 
-## Running unit tests
+Using yarn
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```sh
+yarn add ion-video-player
+```
 
-## Running end-to-end tests
+## 🛠 Setup <a name = "setup"></a>
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Once installed you need to import our module in the parent module for the component you will be using it in:
 
-## Further help
+```js
+import { IonVideoPlayerModule } from 'ion-video-player';
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+@NgModule({
+  ...
+  imports: [IonVideoPlayerModule, ...],
+  ...
+})
+export class YourModule {
+}
+```
+
+## Usage <a name = "usage"></a>
+
+Include the component on page template, like the example below:
+
+```
+  <ion-video-player [options]="{
+    src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+    type: 'video/mp4',
+    poster:'https://via.placeholder.com/500x400',
+    controls: true,
+    autoplay: false,
+    muted: false
+  }"
+  (play)="yourEvent()"
+  (pause)="yourEvent()"
+  (ended)="yourEvent()"
+  (volumechange)="yourEvent()"
+  (playing)="yourEvent()"
+  (error)="yourEvent()"
+  (error)="yourEvent()"
+  ></ion-video-player>
+```
+
+### API
+
+### Properties
+- options
+ - src: `string` any valid video link/path
+ - type: `string` video mimetype.  e.g: `'video/mp4'`
+ - poster: `string` any valid poster image link/path
+ - controls: `boolean` show constrols on video element
+ - autoplay: `boolean` auto play video
+ - muted: `boolean` to mute video 
+
+## Author <a name = "author"></a>
+
+👤 **Najam Us Saqib**
+
+- Github: [@saqib92](https://github.com/saqib92)
+
+## 🤝 Contributing <a name = "contributing"></a>
+
+Contributions, issues and feature requests are welcome!<br />
+Feel free to check [issues page](https://github.com/saqib92/ion-video-player/issues).
+
+## Show your support <a name = "support"></a>
+
+Give a ⭐️ if this project helped you!
+
+## 📝 License <a name = "license"></a>
+
+Copyright © 2022 [Saqb92](https://github.com/saqib92).<br />
+This project is [MIT](https://github.com/saqib92/ion-video-player/blob/master/LICENSE) licensed.
