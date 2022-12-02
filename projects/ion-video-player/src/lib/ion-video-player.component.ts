@@ -1,6 +1,5 @@
 import { Component, OnChanges, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 
-
 @Component({
   selector: 'ion-video-player',
   templateUrl: 'ion-video-player.html',
@@ -16,14 +15,23 @@ export class IonVideoPlayerComponent implements OnChanges {
   isPlaying: boolean = false;
   volume: number = 100;
 
-  @Input() options = {
-    src: '',
-    type: '',
-    autoplay: false,
-    muted: true
+  //Input options
+  @Input() options!: {
+    src: string;
+    type: string;
+    poster: string;
+    autoplay: boolean;
+    muted: boolean;
+    controls: boolean
   };
 
+  //Output Events
+  @Output() play = new EventEmitter<any>();
+  @Output() pause = new EventEmitter<any>();
   @Output() ended = new EventEmitter<any>();
+  @Output() volumechange = new EventEmitter<any>();
+  @Output() playing = new EventEmitter<any>();
+  @Output() error = new EventEmitter<any>();
 
   ngOnChanges() {
   }
@@ -80,9 +88,9 @@ export class IonVideoPlayerComponent implements OnChanges {
     // Work out how much of the media has played via the duration and currentTime parameters
     var percentage = Math.floor((100 / this.videoPlayer.nativeElement.duration) * this.videoPlayer.nativeElement.currentTime);
     // Update the progress bar's value
-    this.progressBar.nativeElement.value = percentage;
-    // Update the progress bar's text (for browsers that don't support the progress element)
-    this.progressBar.nativeElement.innerHTML = percentage + '% played';
+    if (this.options.controls) {
+      this.progressBar.nativeElement.value = percentage;
+    }
   }
 
   seek(e: any) {
@@ -100,10 +108,10 @@ export class IonVideoPlayerComponent implements OnChanges {
   }
 
   //Open Player in Full screen mode
-  openFullScreen() {
-    if(document.fullscreenElement){
+  toggleFullScreen() {
+    if (document.fullscreenElement) {
       document.exitFullscreen();
-    }else{
+    } else {
       if (this.playerContainer.nativeElement.requestFullscreen) {
         this.playerContainer.nativeElement.requestFullscreen();
       } else if (this.playerContainer.nativeElement.webkitRequestFullscreen) { /* Safari */
@@ -126,29 +134,58 @@ export class IonVideoPlayerComponent implements OnChanges {
     }
   }
 
+  // Fires when the audio/video has been started or is no longer paused
   onPlay() {
     console.log('onPlay')
+    this.play.emit();
   }
 
+  // Fires when the audio/video has been paused
   onPause() {
     console.log('onPause')
+    this.pause.emit();
   }
 
+  // Fires when the current playlist is ended
   onEnded() {
     console.log('onEnded')
     this.ended.emit();
   }
 
+  // Fires when the volume has been changed
   onVolumechange() {
     console.log('onVolumechange')
+    this.volumechange.emit();
   }
 
   onPlaying() {
     console.log('onPlaying')
+    this.playing.emit();
   }
 
   onError() {
     console.log('onError')
+    this.error.emit();
+  }
+
+  onProgress() {
+    // this.videoPlayer.nativeElement.addEventListener('progress', () => {
+    //   const duration = this.videoPlayer.nativeElement.duration;
+    //   console.log(duration)
+    //   if (duration > 0) {
+    //     for (let i = 0; i < this.videoPlayer.nativeElement.buffered.length; i++) {
+    //       if (
+    //         this.videoPlayer.nativeElement.buffered.start(this.videoPlayer.nativeElement.buffered.length - 1 - i) <
+    //         this.videoPlayer.nativeElement.currentTime
+    //       ) {
+    //         console.log(
+    //           (this.videoPlayer.nativeElement.buffered.end(this.videoPlayer.nativeElement.buffered.length - 1 - i) * 100) / duration
+    //         );
+    //         break;
+    //       }
+    //     }
+    //   }
+    // });
   }
 
 }

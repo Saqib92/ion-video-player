@@ -1,5 +1,8 @@
 <div id="player" #playerContainer class="ion-video-player">
-    <video id="video-element" (timeupdate)="updateProgressBar()" #player [autoplay]="options.autoplay"
+    <video id="video-element" #player
+        (timeupdate)="updateProgressBar()"
+        [poster]="options.poster"
+        [autoplay]="options.autoplay"
         [muted]="options.muted"
         (play)="onPlay()"
         (pause)="onPause()"
@@ -7,10 +10,12 @@
         (volumechange)="onVolumechange()"
         (playing)="onPlaying()"
         (error)="onError()"
-        >
+        (progress)="onProgress()">
         <source [src]="options.src" [type]="options.type">
     </video>
-    <div id="controls">
+
+    <div id="controls" *ngIf="options.controls">
+
         <progress id="progress-bar" (click)="seek($event)" min="0" max="100" value='1' #progressBar></progress>
 
         <div class="controls-btns">
@@ -24,8 +29,18 @@
             </div>
 
             <div class="volume-box">
-                <input type="range" class="volumeRange" (change)="setVolume()" id="volume-bar" title="volume" min="0"
-                    max="100" step="1" value="100" #volumeBar>
+                <input type="range" class="volumeRange"
+                    (change)="setVolume()" 
+                    min="0"
+                    max="100"
+                    step="1"
+                    [value]="volumeBar.value"
+                    #volumeBar
+                    [ngStyle]="{
+                        'background-size': volumeBar.value + '% 100%'
+                    }"
+                />
+
                 <ion-button fill="clear" size="small" slot="icon-only" class="mute" title="mute" (click)="muteVolume()">
                     <ion-icon [name]="
                         volume == 0 ? 'volume-mute'
@@ -36,7 +51,8 @@
                         : 'volume-high'">
                     </ion-icon>
                 </ion-button>
-                <ion-button fill="clear" size="small" slot="icon-only" (click)="openFullScreen()">
+
+                <ion-button fill="clear" size="small" slot="icon-only" (click)="toggleFullScreen()">
                     <ion-icon name="expand"></ion-icon>
                 </ion-button>
 
