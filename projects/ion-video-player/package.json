@@ -1,6 +1,6 @@
 {
   "name": "ion-video-player",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "HTML video player for Ionic 6 applications using angular",
   "author": "Najam Us Saqib",
   "license": "MIT",

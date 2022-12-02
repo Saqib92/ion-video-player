@@ -6,9 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SecondsToHoursPipe implements PipeTransform {
 
     transform(value: number): string {
-        const hours: number = Math.floor(value / 3600);
-        const minutes: number = Math.floor(value % 3600);
-        return hours + ':' + minutes;
+        return new Date(value * 1000).toISOString().substring(11, 19);
     }
 
 }
